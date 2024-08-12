@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group, User
 from django.contrib import messages
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'layout/index.html')
 
 #voter login register and profile 
 
