@@ -17,7 +17,7 @@ urlpatterns = [
 
     path('s/login', views.clogin_view , name='candidate_login'),
     path('s/register', views.cregister_view , name='candidate_register'),
-    path('s/candidate', views.cadidate_view , name='candidate'),
+    path('s/candidate', views.candidate_view , name='candidate'),
     
     #party
     path('s/login', views.plogin_view , name='party_login'),

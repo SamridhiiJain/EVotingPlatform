@@ -144,7 +144,7 @@ def clogin_view(request):
     
     return render(request, 'accounts/login_candidate.html')
 
-def register_view(request):
+def cregister_view(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
