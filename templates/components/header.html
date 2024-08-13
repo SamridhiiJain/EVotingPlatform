@@ -1,0 +1,136 @@
+<!-- header will contain navbar and will be included in all pages -->
+<nav
+    class="navbar navbar-expand-sm navbar-light bg-light"
+>
+    <div class="container">
+        <a class="navbar-brand" href="#">E-VOTING PLATFORM</a>
+        <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" aria-current="page"
+                        >Home
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="dropdownId"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Candidates</a
+                    >
+                    <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownId"
+                    >
+                        <a class="dropdown-item" href="#"
+                            >Mr.Narendra Modi</a
+                        >
+                        <a class="dropdown-item" href="#"
+                            >Mr.Rahul Gandhi</a
+                        >
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="dropdownId"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Parties</a
+                    >
+                    <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownId"
+                    >
+                        <a class="dropdown-item" href="#"
+                            >BJP</a
+                        >
+                        <a class="dropdown-item" href="#"
+                            >Indian Nation Congress</a
+                        >
+                        <a class="dropdown-item" href="#"
+                        >AAP</a
+                    >
+                    <a class="dropdown-item" href="#"
+                    >TMU</a
+                >
+                    </div>
+                </li>
+            </ul>
+            <form class="d-flex my-2 my-lg-0">
+                <input
+                    class="form-control me-sm-2"
+                    type="text"
+                    placeholder="Search"
+                />
+                <button
+                    class="btn btn-outline-success my-2 my-sm-0"
+                    type="submit"
+                >
+                    Search
+                </button>
+            </form>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link" title="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li> 
+                
+                {% if user.is_superuser %}
+                    
+                <li class="nav-item">
+                    <a href="{% url 'admin:index' %}" class="nav-link" title="dashboard">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li> 
+                {% else %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link" title="dashboard">
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% endif %}
+                    
+               
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link" title="logout">
+                        <i class="fas fa--sign-out-alt"></i>
+                    </a>
+                </li> 
+                {% else %}
+                <li class="nav-item">
+                  <a href="{% url 'seller_login' %}" class="nav-link me-5 text-light rounded-3">Seller Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link" title="login">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="nav-link" title="register">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+                </li> 
+                {% endif %}
+            
+        </div>
+    </div>
+</nav>
