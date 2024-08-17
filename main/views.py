@@ -6,6 +6,39 @@ from django.contrib import messages
 def index(request):
     return render(request, 'layout/index.html')
 
+def login(request):
+    return render(request, 'accounts/choice.html')
+
+# def register(request):
+#     return render(request, 'accounts/choice.html')
+
+
+#Choose the type of elections
+
+def choice_PGE(request):
+   return render(request, 'accounts/PGE_constituencies.html')
+
+def choice_SAE(request):
+   return render(request, 'accounts/SAE_constituencies.html')
+
+#Choose constituencies
+
+def choice_constituency_PGE(request):
+    return render(request, 'accounts/choose_user.html')
+def choice_constituency_SAE(request):
+    return render(request, 'accounts/choose_user.html')
+
+#choose user
+
+def voter(request):
+    return render(request, 'accounts/login_voter.html')
+
+def candidate(request):
+    return render(request, 'accounts/login_cand.html')
+
+#Choose Voter and Candidate
+
+
 #voter login register and profile 
 
 def login_view(request):
@@ -17,25 +50,25 @@ def login_view(request):
         
         if not username:
             messages.error(request, 'Username is required')
-            return redirect('login')
+            return redirect('voter_login')
         if not password:
             messages.error(request, 'Password is required')
-            return redirect('login')
+            return redirect('voter_login')
         if not aadhar_no:
             messages.error(request, 'Aadhar number is required')
-            return redirect('login')
+            return redirect('voter_login')
         if not voterID_no:
             messages.error(request, 'Voter ID number is required')
-            return redirect('login')
+            return redirect('voter_login')
         user = authenticate(request, username=username, password=password, aadhar_no=aadhar_no, voterID_no=voterID_no)
         if user is None:
             messages.error(request, 'Invalid credentials')
-            return redirect('login')
+            return redirect('voter_login')
         if not user.groups.exists(): # Check if user has a group
             messages.error(request, '!Contact your administrator')
-            return redirect('login')
+            return redirect('voter_login')
         groups = user.groups.all()   # Get the first group name
-        if len(groups)>0 and groups[0].name == 'voter':
+        if len(groups)==0 and groups[0].name != 'voter':
             messages.error(request, 'You are not authorized to login!')
         login(request, user)
         return redirect('voter')
@@ -55,44 +88,44 @@ def register_view(request):
         
         if not first_name:
             messages.error(request, 'First Name is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not last_name:
             messages.error(request, 'Last Name is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not username:
             messages.error(request, 'Username is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not aadhar_no:
             messages.error(request, 'Aadhar number is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not voterID_no:
             messages.error(request, 'Voter ID number is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not password:
             messages.error(request, 'Password is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not cpassword:
             messages.error(request, 'Confirm Password is required')
-            return redirect('register')
+            return redirect('voter_register')
         if not email:
             messages.error(request, 'Email is required')
-            return redirect('register')
+            return redirect('voter_register')
         
         if password != cpassword:
             messages.error(request, 'Passwords do not match')
-            return redirect('register')
+            return redirect('voter_register')
         if User.objects.filter(aadhar_no=aadhar_no).exists():
             messages.error(request, 'already registered')
-            return redirect('register')
+            return redirect('voter_register')
         if User.objects.filter(voterID_no=voterID_no).exists():
             messages.error(request, 'already registered')
-            return redirect('register')
+            return redirect('voter_register')
         if User.objects.filter(username=username).exists():
             messages.error(request,'Username is already Taken')
-            return redirect('register')
+            return redirect('voter_register')
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Email is taken')
-            return redirect('register')
+            return redirect('voter_register')
         user = User(first_name=first_name, last_name=last_name,aadhar_no=aadhar_no,voterID_no=voterID_no, username=username, email=email)
         user.set_password(password)
         user.save()
@@ -102,7 +135,7 @@ def register_view(request):
 
         messages.success(request, 'Account created successfully')
 
-        return redirect('login')
+        return redirect('voter_login')
 
     return render(request, 'accounts/register_voter.html')
 
@@ -142,7 +175,7 @@ def clogin_view(request):
             messages.error(request, 'You are not authorized to login!')
             return redirect('candidate_login')
     
-    return render(request, 'accounts/login_candidate.html')
+    return render(request, 'accounts/login_cand.html')
 
 def cregister_view(request):
     if request.method == 'POST':

@@ -23,28 +23,7 @@
                         <span class="visually-hidden">(current)</span></a
                     >
                 </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="dropdownId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >Candidates</a
-                    >
-                    <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownId"
-                    >
-                        <a class="dropdown-item" href="#"
-                            >Mr.Narendra Modi</a
-                        >
-                        <a class="dropdown-item" href="#"
-                            >Mr.Rahul Gandhi</a
-                        >
-                    </div>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a
                         class="nav-link dropdown-toggle"
@@ -73,6 +52,11 @@
                 >
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"
+                        >Result
+                        </a>
+                    </li>
             </ul>
             <form class="d-flex my-2 my-lg-0">
                 <input
@@ -87,14 +71,16 @@
                     Search
                 </button>
             </form>
+            <li class="nav-item">
+                <a href="{% url 'party_login' %}" class="nav-link me-5  rounded-3">Party Login</a>
+              </li>
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a href="#" class="nav-link" title="cart">
-                        <i class="fas fa-shopping-cart"></i>
+                    <a href="{% url 'logout' %}" class="nav-link" title="logout">
+                        <i class="fas fa--sign-out-alt"></i>
                     </a>
-                </li> 
-                
+                </li>
                 {% if user.is_superuser %}
                     
                 <li class="nav-item">
@@ -108,17 +94,7 @@
                         <i class="fas fa-user"></i>
                     </a>
                 {% endif %}
-                    
-               
-                <li class="nav-item">
-                    <a href="{% url 'logout' %}" class="nav-link" title="logout">
-                        <i class="fas fa--sign-out-alt"></i>
-                    </a>
-                </li> 
                 {% else %}
-                <li class="nav-item">
-                  <a href="{% url 'seller_login' %}" class="nav-link me-5 text-light rounded-3">Seller Login</a>
-                </li>
                 <li class="nav-item">
                     <a href="{% url 'login' %}" class="nav-link" title="login">
                         <i class="fas fa-sign-in-alt"></i>
