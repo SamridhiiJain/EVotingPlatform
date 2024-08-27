@@ -6,11 +6,14 @@ from django.contrib import messages
 def index(request):
     return render(request, 'layout/index.html')
 
-def login(request):
-    return render(request, 'accounts/choice.html')
+def reg_choose_user(request):
+    return render(request, 'accounts/reg_choose_user.html')
 
-# def register(request):
-#     return render(request, 'accounts/choice.html')
+def choose_user(request):
+    return render(request, 'accounts/choose_user.html')
+
+def register(request):
+    return render(request, 'accounts/choice.html')
 
 
 #Choose the type of elections
@@ -21,7 +24,7 @@ def choice_PGE(request):
 def choice_SAE(request):
    return render(request, 'accounts/SAE_constituencies.html')
 
-#Choose constituencies
+# #Choose constituencies
 
 def choice_constituency_PGE(request):
     return render(request, 'accounts/choose_user.html')
@@ -237,7 +240,7 @@ def cregister_view(request):
         messages.success(request, 'Account created successfully')
         return redirect('candidate_login')
 
-    return render(request, 'accounts/register_candidate.html')
+    return render(request, 'accounts/register_cand.html')
 
 def candidate_view(request):
     return render(request, 'accounts/candidate.html')

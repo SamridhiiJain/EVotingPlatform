@@ -4,15 +4,20 @@ from .import views
 
 urlpatterns = [
     #login 
-    
     path('', views.index , name='index'),
-    
-    #login
+    #choose user for login
 
+    path('/login/user', views.choose_user , name='choose_user') ,
+
+    #choose user for register
+    path('/register/user', views.reg_choose_user , name='reg_choose_user') ,
+
+    #login
+   
     path('/login', views.login , name='login'),
 
-    #register
-    # path('/register', views.register , name='register'),
+    # register
+    path('/register', views.register , name='register'),
  
     #choose the type of election
 
@@ -25,8 +30,8 @@ urlpatterns = [
     path('choice/constituency', views.choice_constituency_SAE , name='choice_SAE_constituency'),
     
     #Type of constituency
-    path('choice/PGE/constituency', views.PGE_constituency , name='PGE_constituency'),
-    path('choice/SAE/constituency', views.SAE_constituency , name='SAE_constituency'),
+    # path('choice/PGE/constituency', views.PGE_constituency , name='PGE_constituency'),
+    # path('choice/SAE/constituency', views.SAE_constituency , name='SAE_constituency'),
 
     #voter
 

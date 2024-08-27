@@ -2,7 +2,7 @@
 <nav
     class="navbar navbar-expand-sm navbar-light bg-light"
 >
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="#">E-VOTING PLATFORM</a>
         <button
             class="navbar-toggler d-lg-none"
@@ -71,9 +71,11 @@
                     Search
                 </button>
             </form>
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item">
                 <a href="{% url 'party_login' %}" class="nav-link me-5  rounded-3">Party Login</a>
               </li>
+            </ul>
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -95,13 +97,15 @@
                     </a>
                 {% endif %}
                 {% else %}
+                <!-- login icon -->
                 <li class="nav-item">
-                    <a href="{% url 'login' %}" class="nav-link" title="login">
+                    <a href="{% url 'choose_user' %}" class="nav-link" title="login">
                         <i class="fas fa-sign-in-alt"></i>
                     </a>
                 </li> 
+                <!-- register icon -->
                 <li class="nav-item">
-                    <a href="{% url 'register' %}" class="nav-link" title="register">
+                    <a href="{% url 'reg_choose_user' %}" class="nav-link" title="register">
                         <i class="fas fa-user-plus"></i>
                     </a>
                 </li> 
