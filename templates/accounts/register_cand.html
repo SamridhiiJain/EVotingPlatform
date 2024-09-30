@@ -1,0 +1,77 @@
+
+{% extends 'layout/base_function.html' %}
+
+{% block content %}
+<div class="container-fluid">
+   
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-sm-10 col-md-10 col-lg-10 col col-xl-10 ">
+              <div class="card" style="border-radius: 3rem;">
+                <div class="row g-0">
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img src="assets\pictures\registerpartypic.jpg"
+                      alt="register form" class="img-fluid" style="border-radius: 3rem 0 0 3rem; height: 32rem;" />
+                  </div>
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body p-4 lg-5 text-black">
+      
+                      <form method="POST">
+                        {% csrf_token %}
+                        <!-- <div class="d-flex align-items-center mb-3 pb-1">
+                          <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                          <span class="h1 fw-bold mb-0">Logo</span>
+                        </div> -->
+                        <!-- <h5 class="fw-normal mb-2 pb-1" style="letter-spacing: 1px;">Welcome Party!</h5> -->
+                        <h6 class="fw-normal mb-1 pb-1" style="letter-spacing: 1px;">Create your account</h6>
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" name="first_name" id="first_name" class="form-control form-control-md" placeholder="First Name"/>
+                          </div>
+
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" name="last_name" id="last_name" class="form-control form-control-md" placeholder="Last Name"/>
+                          </div>
+                         
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" name="username" id="username" class="form-control form-control-md" placeholder="@username"/>
+                          </div>
+
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" name="aadhar_no" id="aadhar_no" class="form-control form-control-md" placeholder="Aadhar Number"/>
+                          </div>
+
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" name="voterID_no" id="voterID_no" class="form-control form-control-md" placeholder="Voter ID Number"/>
+                          </div>
+
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="password" id="password"  name="password" class="form-control form-control-md" placeholder="Password"/>
+                          </div>
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="password" id="cpassword"  name="cpassword" class="form-control form-control-md" placeholder="Confirm Password"/>
+                          </div>
+                        <div data-mdb-input-init class="form-outline mb-2">
+                          <input type="email" id="email" name="email" class="form-control form-control-md" placeholder="Email"/>
+                        </div>
+                        <div class="pt-1 mb-2">
+                          <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-sm btn-block">Register</button>
+                        </div>
+      
+                        <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
+                        <p style="color: #393f81;">Already have an account? <a href="{% url 'candidate_login' %}"
+                            style="color: #393f81;">Login</a></p>
+                        <!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                        <a href="#!" class="small text-muted">Privacy policy</a> -->
+                      </form>
+      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+{% endblock content %}

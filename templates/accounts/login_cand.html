@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container-fluid">
     
-    <section class="vh-100" style="background-color: bisque;">
+    <section class="vh-100"">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-sm-10 col-md-10 col-lg-10 col col-xl-10 ">
@@ -23,11 +23,19 @@
                           <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                           <span class="h1 fw-bold mb-0">Logo</span>
                         </div> -->
-                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Welcome Customer!</h5>
+                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Welcome Candidate!</h5>
                         <h6 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h6>
       
                         <div data-mdb-input-init class="form-outline mb-4">
                           <input type="text" id="username" class="form-control form-control-lg" name="username" aria-describedby="userhelpId" placeholder="username"/>
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="aadhar_no" class="form-control form-control-lg" name="aadhar_no" aria-describedby="userhelpId" placeholder="Aadhar Number"/>
+                        </div>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="voterID_no" class="form-control form-control-lg" name="voterID_no" aria-describedby="userhelpId" placeholder="Voter ID Number"/>
                         </div>
       
                         <div data-mdb-input-init class="form-outline mb-4">
@@ -39,7 +47,7 @@
                         </div>
       
                         <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
-                        <p style="color: #393f81;">Don't have an account? <a href="{% url 'register' %}"
+                        <p style="color: #393f81;">Don't have an account? <a href="{% url 'candidate_register' %}"
                             style="color: #393f81;">Register here</a></p>
                         <!-- <a href="#!" class="small text-muted">Terms of use.</a>
                         <a href="#!" class="small text-muted">Privacy policy</a> -->
